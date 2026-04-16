@@ -70,17 +70,20 @@ class ArweaveUploader:
         payload = manifest.to_json()
 
         tx = arweave.Transaction(wallet, data=payload)
+        def ascii_safe(s):
+            return str(s).encode("ascii", "ignore").decode()
+
         tx.add_tag("Content-Type", "application/json")
-        tx.add_tag("App-Name", "BioAnchor")
-        tx.add_tag("App-Version", manifest.bioanchor_version)
-        tx.add_tag("Schema-Version", manifest.schema_version)
-        tx.add_tag("Analysis-Type", manifest.analysis_type)
-        tx.add_tag("Domain", manifest.domain or "")
-        tx.add_tag("Created-At", manifest.created_at)
+        tx.add_tag("App-Name", ascii_safe("BioAnchor"))
+        tx.add_tag("App-Version", ascii_safe(manifest.bioanchor_version))
+        tx.add_tag("Schema-Version", ascii_safe(manifest.schema_version))
+        tx.add_tag("Analysis-Type", ascii_safe(manifest.analysis_type))
+        tx.add_tag("Domain", ascii_safe(manifest.domain or ""))
+        tx.add_tag("Created-At", ascii_safe(manifest.created_at))
         if manifest.title:
-            tx.add_tag("Title", manifest.title)
+            tx.add_tag("Title", ascii_safe(manifest.title))
         for tag in manifest.tags:
-            tx.add_tag("Tag", tag)
+            tx.add_tag("Tag", ascii_safe(tag))
 
         tx.sign()
         tx.send()

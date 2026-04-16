@@ -91,7 +91,7 @@ try:
 
     from bioanchor import BioAnchor
 
-    ba = BioAnchor(mock=True)  # swap mock=False + wallet_path="wallet.json" for real upload
+    ba = BioAnchor(wallet_path="wallet.json", mock=False)  # swap mock=False + wallet_path="wallet.json" for real upload
 
     tx_id = ba.archive_pymc(
         idata=idata,

@@ -1,0 +1,71 @@
+{
+  "schema_version": "1.0",
+  "bioanchor_version": "0.1.0",
+  "created_at": "2026-04-16T13:57:52.688669+00:00",
+  "title": "Bayesian dose-response (Hill equation) — IC50 estimation",
+  "description": "",
+  "authors": [
+    "BioAnchor Example"
+  ],
+  "analysis_type": "MCMC",
+  "domain": "drug_discovery",
+  "tags": [
+    "dose-response",
+    "ic50",
+    "hill-equation",
+    "nuts"
+  ],
+  "software": {
+    "language": "Python 3.9.6",
+    "platform": "macOS-26.3-arm64-arm-64bit",
+    "packages": {
+      "numpy": "1.22.4",
+      "scipy": "1.7.3",
+      "arviz": "0.12.1",
+      "pandas": "2.3.3"
+    }
+  },
+  "data": {
+    "sha256": "de2fb17021c0dfce8bd9441e40e6ad1fddc13a1007387a330fbbf6c7839b63b9",
+    "description": "Synthetic dose-response: 12-point IC50 curve",
+    "n_samples": 12,
+    "n_features": 2,
+    "source": "synthetic"
+  },
+  "mcmc": {
+    "sampler": "NUTS",
+    "n_chains": 2,
+    "n_draws": 1000,
+    "n_warmup": 500,
+    "seed": 42,
+    "prior_spec": {
+      "log_ic50": "Normal(mu=-0.3, sigma=1.0)",
+      "hill_n": "HalfNormal(sigma=2.0)",
+      "bottom": "Normal(mu=0, sigma=10)",
+      "top": "Normal(mu=100, sigma=10)",
+      "sigma": "HalfNormal(sigma=5)"
+    },
+    "posterior_mean": {
+      "log_ic50": -0.31,
+      "ic50": 0.49,
+      "hill_n": 1.79
+    },
+    "posterior_std": {
+      "log_ic50": 0.09,
+      "ic50": 0.1,
+      "hill_n": 0.21
+    },
+    "r_hat": {
+      "log_ic50": 1.001,
+      "ic50": 1.001,
+      "hill_n": 1.003
+    },
+    "ess_bulk": {
+      "log_ic50": 892.0,
+      "ic50": 887.0,
+      "hill_n": 755.0
+    },
+    "divergences": 0,
+    "acceptance_rate": 0.93
+  }
+}

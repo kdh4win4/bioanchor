@@ -11,7 +11,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Build draft PDF
-        uses: openjournals/openpaper-action@master
+        uses: openjournals/openjournals-draft-action@master
         with:
           journal: joss
           paper-path: paper.md

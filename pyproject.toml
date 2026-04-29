@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "bioanchor"
 version = "0.1.0"
-description = "Permanent archiving of Bayesian/MCMC analysis artifacts on Arweave"
+description = "Autonomous scientific agent for Bayesian MCMC analysis with uncertainty quantification and decentralized provenance archiving"
 readme = "README.md"
 license = {text = "MIT"}
 requires-python = ">=3.10"
